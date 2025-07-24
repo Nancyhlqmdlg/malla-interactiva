@@ -1,3 +1,4 @@
+// Defino niveles y qué semestres van en cada uno
 const YEAR_ORDER = [
   'Principiante',
   'Intermedio',
@@ -11,34 +12,42 @@ const SEM_MAPPING = {
   'Avanzado':      ['VIII Semestre','IX Semestre','X Semestre']
 };
 
-// 1) Cargo y parseo courses.txt
+// 1) Cargar y parsear courses.txt
 fetch('courses.txt')
   .then(res => res.text())
-  .then(txt => {
-    const lines = txt.split('\n').map(l=>l.trim()).filter(Boolean);
+  .then(text => {
+    const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
     const courses = [];
     let currentYear = '', currentSem = '';
 
     for (const line of lines) {
-      // cambio de nivel
-      if (YEAR_ORDER.some(y=>new RegExp(`^${y}$`,'i').test(line))) {
-        currentYear = YEAR_ORDER.find(y=>new RegExp(`^${y}$`,'i').test(line));
+      // Nivel
+      if (YEAR_ORDER.includes(line)) {
+        currentYear = line;
         continue;
       }
-      // cambio de semestre
+      // Semestre
       if (/I{1,3} Semestre|IV Semestre|V Semestre|VI Semestre|VII Semestre|VIII Semestre|IX Semestre|X Semestre/.test(line)) {
         currentSem = line;
         continue;
       }
-      // extraigo datos
-      const name    = (line.match(/^(.+?) \(/)||[,''])[1].trim();
-      const code    = (line.match(/\(código ([^)]+)\)/)||[,''])[1].trim();
-      const credits = +(line.match(/\(créditos que da (\d+)/)||[,'0'])[1];
-      const opensRaw= (line.match(/\(abre ([^)]+)\)/)||[,''])[1];
-      const opens   = opensRaw.toLowerCase().includes('no abre') 
-                        ? [] 
+      // Datos de la materia
+      const nameMatch = line.match(/^(.+?) \(/);
+      const codeMatch = line.match(/\(código ([^)]+)\)/);
+      const credMatch = line.match(/\(créditos que da (\d+)/);
+      const opensMatch= line.match(/\(abre ([^)]+)\)/);
+      const unlockMatch = line.match(/\(créditos que ocupa (\d+)/);
+
+      if (!nameMatch || !codeMatch || !credMatch) continue;
+
+      const name    = nameMatch[1].trim();
+      const code    = codeMatch[1].trim();
+      const credits = +credMatch[1];
+      const opensRaw= opensMatch ? opensMatch[1] : '';
+      const opens   = opensRaw.toLowerCase().includes('no abre')
+                        ? []
                         : opensRaw.split(';').map(s=>s.trim());
-      const unlock  = +(line.match(/\(créditos que ocupa (\d+)/)||[,'0'])[1];
+      const unlock  = unlockMatch ? +unlockMatch[1] : 0;
 
       courses.push({
         year: currentYear,
@@ -50,58 +59,66 @@ fetch('courses.txt')
       });
     }
 
-    // 2) Invierto opens → prerequisites
+    // 2) Invertir opens → prerequisites
     courses.forEach(c =>
-      c.opens.forEach(openName => {
-        const target = courses.find(x=>x.name===openName);
+      c.opens.forEach(o => {
+        const target = courses.find(x => x.name === o);
         if (target) target.prerequisites.push(c.code);
       })
     );
 
-    // 3) Pinto y activo interacciones
+    // 3) Render y lógica
     renderByYearSem(courses);
     initInteractions(courses);
   })
-  .catch(err => console.error('Error al cargar courses.txt:', err));
+  .catch(err => console.error('Error cargando courses.txt:', err));
 
-
+// Dibuja niveles y semestres
 function renderByYearSem(courses) {
   const container = document.getElementById('grid');
   container.innerHTML = '';
 
   YEAR_ORDER.forEach(level => {
-    const lvlCourses = courses.filter(c=>c.year===level);
+    const lvlCourses = courses.filter(c => c.year === level);
     if (!lvlCourses.length) return;
 
     const yearSec = document.createElement('section');
     yearSec.className = 'year';
-    let inner = `<h2>${level}</h2>`;
+    let html = `<h2>${level}</h2>`;
 
+    // Si es principiante/intermedio/avanzado
     if (SEM_MAPPING[level]) {
-      inner += `<div class="year-grid"></div>`;
-      yearSec.innerHTML = inner;
-      const yearGrid = yearSec.querySelector('.year-grid');
+      html += `<div class="year-grid"></div>`;
+      yearSec.innerHTML = html;
+      const yGrid = yearSec.querySelector('.year-grid');
+
       SEM_MAPPING[level].forEach(sem => {
-        const semSec = document.createElement('div');
-        semSec.className = 'semester';
-        semSec.innerHTML = `<h3>${sem}</h3><div class="courses-grid"></div>`;
-        const cg = semSec.querySelector('.courses-grid');
-        lvlCourses.filter(c=>c.semester===sem)
-                  .forEach(c=>createCourseCard(c,cg));
-        yearGrid.appendChild(semSec);
+        const semDiv = document.createElement('div');
+        semDiv.className = 'semester';
+        semDiv.innerHTML = `<h3>${sem}</h3><div class="courses-grid"></div>`;
+        const cg = semDiv.querySelector('.courses-grid');
+
+        lvlCourses
+          .filter(c => c.semester === sem)
+          .forEach(c => createCourseCard(c, cg));
+
+        yGrid.appendChild(semDiv);
       });
+
     } else {
-      inner += `<div class="courses-grid-full"></div>`;
-      yearSec.innerHTML = inner;
-      const fullGrid = yearSec.querySelector('.courses-grid-full');
-      lvlCourses.forEach(c=>createCourseCard(c, fullGrid));
+      // Sexto y Séptimo año sin semestres
+      html += `<div class="courses-grid-full"></div>`;
+      yearSec.innerHTML = html;
+      const full = yearSec.querySelector('.courses-grid-full');
+      lvlCourses.forEach(c => createCourseCard(c, full));
     }
 
     container.appendChild(yearSec);
   });
 }
 
-function createCourseCard(course, parentEl) {
+// Crea la tarjeta de cada materia (sin bind de evento)
+function createCourseCard(course, parent) {
   const el = document.createElement('div');
   el.className = 'course locked';
   el.dataset.code = course.code;
@@ -113,50 +130,56 @@ function createCourseCard(course, parentEl) {
     <span class="name">${course.name}</span>
     <span class="cred">${course.credits} cr</span>
   `;
-  el.addEventListener('click', () => toggleCourse(el));
-  parentEl.appendChild(el);
+  parent.appendChild(el);
 }
 
+// Inicializa clics, créditos acumulados y desbloqueos
 function initInteractions(courses) {
   const credEl = document.getElementById('credits');
   let totalCredits = 0;
   const approved = new Set();
 
-  function toggleCourse(el) {
-    const code = el.dataset.code;
-    if (el.classList.contains('locked')) return;
+  // Asigno el evento click a todas las tarjetas
+  document.querySelectorAll('.course').forEach(el => {
+    el.addEventListener('click', () => {
+      if (el.classList.contains('locked')) return;
+      const code = el.dataset.code;
 
-    if (approved.has(code)) {
-      approved.delete(code);
-      totalCredits -= +el.dataset.cred;
-      el.classList.remove('approved');
-    } else {
-      approved.add(code);
-      totalCredits += +el.dataset.cred;
-      el.classList.add('approved');
-    }
-    credEl.textContent = `Créditos acumulados: ${totalCredits}`;
-    refreshLockStates(courses, approved, totalCredits);
-  }
+      if (approved.has(code)) {
+        approved.delete(code);
+        totalCredits -= +el.dataset.cred;
+        el.classList.remove('approved');
+      } else {
+        approved.add(code);
+        totalCredits += +el.dataset.cred;
+        el.classList.add('approved');
+      }
 
+      credEl.textContent = `Créditos acumulados: ${totalCredits}`;
+      refreshLockStates(courses, approved, totalCredits);
+    });
+  });
+
+  // Primera vez
   refreshLockStates(courses, approved, totalCredits);
-
-  function toggleCourse(el) { /*…*/ }
 }
 
+// Refresca bloqueo/desbloqueo según créditos y prerrequisitos
 function refreshLockStates(courses, approved, totalCredits) {
   courses.forEach(c => {
-    const el = document.querySelector(`.course[data-code="${c.code}"]`);
-    const okCred = totalCredits >= +el.dataset.unlock;
-    const okPre  = JSON.parse(el.dataset.prereqs)
-                      .every(req => approved.has(req));
+    const sel = `.course[data-code="${c.code}"]`;
+    const el = document.querySelector(sel);
+    const okCred = totalCredits >= c.unlockCredits;
+    const okPre  = c.prerequisites.every(r => approved.has(r));
+
     if (okCred && okPre) {
       el.classList.remove('locked');
     } else {
       el.classList.add('locked');
       if (approved.has(c.code)) {
+        // si ya lo habías aprobado pero ya no cumple
         approved.delete(c.code);
-        totalCredits -= +el.dataset.cred;
+        totalCredits -= c.credits;
         el.classList.remove('approved');
         document.getElementById('credits').textContent =
           `Créditos acumulados: ${totalCredits}`;
