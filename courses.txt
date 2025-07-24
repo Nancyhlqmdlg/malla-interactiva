@@ -14,7 +14,7 @@ Microbiología I (código BAS001094) (créditos que da 11) (abre Microbiología 
 Histología General (código BAS981000) (créditos que da 15) (abre Histopatología) (créditos que ocupa 0)
 Segundo año
 III Semestre
-Bioquímica Médica (código BAS982000) (créditos que da 8) (abre Farmacología Médica; Taller de Integración I, Genética Médica, Fisiología Humana II) (créditos que ocupa 0)
+Bioquímica Médica (código BAS982000) (créditos que da 8) (abre Farmacología Médica; Taller de Integración I; Genética Médica; Fisiología Humana II) (créditos que ocupa 0)
 Metodología de la Investigación en Salud (código MED986514) (créditos que da 6) (abre Estadística Descriptiva; Salud Comunitaria I; Investigación Clínica I) (créditos que ocupa 80)
 Anatomía Humana II (código BAS000494) (créditos que da 15) (abre Anatomía por Imagen; Taller de Integración I; Salud Comunitaria I) (créditos que ocupa 0)
 Microbiología II (código BAS001394) (créditos que da 11) (abre Farmacología Médica; Taller de Integración I; Salud Comunitaria I) (créditos que ocupa 0)
@@ -55,7 +55,7 @@ Psicología Médica (código MED070794) (créditos que da 8) (no abre nada) (cr�
 Sexualidad Humana (código MED240704) (créditos que da 8) (no abre nada) (créditos que ocupa 380)
 VIII Semestre
 Oftalmología (código MED985900) (créditos que da 5) (no abre nada) (créditos que ocupa 420)
-Epidemiología (código MED040594) (créditos que da 6) (abre Infectología; Competencias del Ejercicio de la Ciudadanía con Enfoque de Género)
+Epidemiología (código MED040594) (créditos que da 6) (abre Infectología; Competencias del Ejercicio de la Ciudadanía con Enfoque de Género) (créditos que ocupa 0)
 Geriatría (código MED988014) (créditos que da 6) (no abre nada) (créditos que ocupa 0)
 Gastroenterología (código MED984800) (créditos que da 12) (abre Pediatría; Gineco-obstetricia; Nefrología) (créditos que ocupa 0)
 Neumología (código MED987314) (créditos que da 18) (abre Gineco-obstetricia; Nefrología) (créditos que ocupa 0)
@@ -79,4 +79,4 @@ Dermatología (código MED987414) (créditos que da 8) (abre Internado Rotatorio
 Sexto año
 Internado Rotatorio de Pregrado (código MED911204) (créditos que da 1) (abre Servicio Social) (créditos que ocupa 656)
 Séptimo año
-Servicio Social (código MED982700) (créditos que ocupa 657)
+Servicio Social (código MED982700) (créditos que da 1) (no abre nada) (créditos que ocupa 657)
