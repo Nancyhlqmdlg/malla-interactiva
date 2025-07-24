@@ -1,1 +1,78 @@
+:root {
+  --color-bg: #f4e5ff;
+  --color-primary: #9b30ff;
+  --color-locked: #ddd;
+  --color-text: #333;
+  --color-approved: #4caf50;
+}
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+#credits {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+#grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.course {
+  background: var(--color-primary);
+  color: white;
+  padding: .75rem;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: transform .1s;
+}
+
+.course:hover {
+  transform: scale(1.03);
+}
+
+.course.locked {
+  background: var(--color-locked);
+  color: #888;
+  cursor: default;
+}
+
+.course.approved {
+  background: var(--color-approved);
+  color: white;
+}
+
+.course .code {
+  font-size: .8rem;
+  opacity: .8;
+}
+
+.course .name {
+  display: block;
+  margin: .5rem 0;
+  font-weight: bold;
+}
+
+.course .cred {
+  font-size: .75rem;
+}
