@@ -9,13 +9,12 @@
   --locked: #e0e0e0;
   --text: #333;
   --approved: #330066;
-  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow: rgba(0,0,0,0.1);
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
 
 body {
@@ -38,7 +37,7 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-/* SECTION AÑOS */
+/* Niveles */
 .year {
   margin-bottom: 2rem;
 }
@@ -50,25 +49,23 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* GRID DE SEMESTRES POR AÑO */
+/* Grid de semestres en Principiante/Intermedio/Avanzado */
 .year-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-/* COLUMNA DE SEMESTRE */
+/* Columna de semestre */
 .semester {
   background: var(--sec-bg);
   border: 2px solid var(--purple);
   border-radius: 6px;
   box-shadow: 0 2px 4px var(--shadow);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
-
-/* CABECERA DE SEMESTRE */
 .semester > h3 {
   background: var(--purple);
   color: white;
@@ -78,7 +75,7 @@ h1 {
   font-weight: 600;
 }
 
-/* LISTA DE CURSOS */
+/* Lista de cursos dentro de un semestre */
 .courses-grid {
   display: flex;
   flex-direction: column;
@@ -86,7 +83,15 @@ h1 {
   padding: 0.75rem;
 }
 
-/* TARJETA DE CURSO */
+/* Para Sexto y Séptimo año sin semestres */
+.courses-grid-full {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+/* Tarjeta de curso */
 .course {
   background: var(--purple-light);
   border: 2px solid var(--purple);
@@ -98,12 +103,11 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
-
 .course:hover:not(.locked) {
   transform: translateY(-2px);
 }
 
-/* ESTADO BLOQUEADO */
+/* Bloqueado */
 .course.locked {
   background: var(--locked);
   border-color: var(--locked);
@@ -111,7 +115,7 @@ h1 {
   cursor: default;
 }
 
-/* ESTADO APROBADO */
+/* Aprobado */
 .course.approved {
   background: var(--approved);
   border-color: var(--purple-dark);
@@ -119,25 +123,18 @@ h1 {
   text-decoration: line-through;
 }
 
-/* TIPOGRAFÍA INTERNA */
+/* Tipografía interna */
 .course .code {
   font-size: 0.75rem;
   opacity: 0.8;
 }
-
 .course .name {
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0.3rem 0;
   text-align: center;
 }
-
 .course .cred {
   font-size: 0.75rem;
   opacity: 0.9;
-}
-
-.course .cred {
-  font-size: .75rem;
-  opacity: .9;
 }
