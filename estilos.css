@@ -5,7 +5,7 @@
   --sec-bg: #f4e5ff;
   --purple-light: #f0e0ff;
   --purple: #9b30ff;
-  --purple-dark: #6600cc;
+  --purple-dark: #440066;
   --locked: #e0e0e0;
   --text: #333;
   --approved: #330066;
@@ -14,8 +14,7 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
 
 body {
@@ -38,7 +37,7 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-/* Niveles */
+/* Nivel y título */
 .year {
   margin-bottom: 2rem;
 }
@@ -50,7 +49,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* Grid de semestres en Principiante/Intermedio/Avanzado */
+/* Grid de semestres */
 .year-grid {
   display: grid;
   gap: 1rem;
@@ -69,14 +68,14 @@ h1 {
 }
 .semester > h3 {
   background: var(--purple);
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 0.5rem;
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-/* Lista de cursos dentro de un semestre */
+/* Cursos en semestres */
 .courses-grid {
   display: flex;
   flex-direction: column;
@@ -84,7 +83,7 @@ h1 {
   padding: 0.75rem;
 }
 
-/* Para Sexto y Séptimo año sin semestres */
+/* Sexto y Séptimo año sin semestres */
 .courses-grid-full {
   display: flex;
   flex-wrap: wrap;
@@ -92,7 +91,7 @@ h1 {
   padding: 0.75rem;
 }
 
-/* Tarjeta de curso */
+/* Tarjetas de curso */
 .course {
   background: var(--purple-light);
   border: 2px solid var(--purple);
@@ -108,7 +107,7 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Bloqueado */
+/* Estado bloqueado */
 .course.locked {
   background: var(--locked);
   border-color: var(--locked);
@@ -116,11 +115,11 @@ h1 {
   cursor: default;
 }
 
-/* Aprobado */
+/* Estado aprobado */
 .course.approved {
   background: var(--approved);
   border-color: var(--purple-dark);
-  color: white;
+  color: #fff;
   text-decoration: line-through;
 }
 
