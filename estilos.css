@@ -3,13 +3,13 @@
 :root {
   --bg: #faf4ff;
   --sec-bg: #f4e5ff;
-  --purple-light: #e1c3ff;
+  --purple-light: #f0e0ff;
   --purple: #9b30ff;
   --purple-dark: #6600cc;
   --locked: #e0e0e0;
   --text: #333;
-  --approved: #551a8b;
-  --shadow: rgba(0, 0, 0, 0.15);
+  --approved: #330066;
+  --shadow: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -28,7 +28,7 @@ body {
 h1 {
   text-align: center;
   color: var(--purple-dark);
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 #credits {
@@ -38,62 +38,103 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
+/* SECTION AÑOS */
+.year {
+  margin-bottom: 2rem;
+}
 .year > h2 {
+  font-size: 1.5rem;
   color: var(--purple-dark);
   border-bottom: 3px solid var(--purple);
-  margin-bottom: .75rem;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
 }
 
-.semester > h3 {
-  color: var(--purple-dark);
-  margin-bottom: .5rem;
-}
-
-.semester .grid {
+/* GRID DE SEMESTRES POR AÑO */
+.year-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+/* COLUMNA DE SEMESTRE */
+.semester {
+  background: var(--sec-bg);
+  border: 2px solid var(--purple);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CABECERA DE SEMESTRE */
+.semester > h3 {
+  background: var(--purple);
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* LISTA DE CURSOS */
+.courses-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+/* TARJETA DE CURSO */
 .course {
   background: var(--purple-light);
   border: 2px solid var(--purple);
-  border-radius: 8px;
-  padding: .75rem;
-  text-align: center;
+  border-radius: 4px;
+  padding: 0.5rem;
   cursor: pointer;
-  box-shadow: 0 2px 6px var(--shadow);
-  transition: transform .1s, background .2s;
+  transition: transform 0.1s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.course:hover {
+.course:hover:not(.locked) {
   transform: translateY(-2px);
 }
 
+/* ESTADO BLOQUEADO */
 .course.locked {
   background: var(--locked);
   border-color: var(--locked);
   color: #888;
   cursor: default;
-  box-shadow: none;
 }
 
+/* ESTADO APROBADO */
 .course.approved {
   background: var(--approved);
   border-color: var(--purple-dark);
-  color: #fff;
+  color: white;
   text-decoration: line-through;
 }
 
+/* TIPOGRAFÍA INTERNA */
 .course .code {
-  font-size: .75rem;
-  opacity: .8;
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 .course .name {
-  display: block;
-  margin: .5rem 0;
+  font-size: 0.9rem;
   font-weight: 600;
+  margin: 0.3rem 0;
+  text-align: center;
+}
+
+.course .cred {
+  font-size: 0.75rem;
+  opacity: 0.9;
 }
 
 .course .cred {
