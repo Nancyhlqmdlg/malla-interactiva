@@ -18,13 +18,13 @@ let approved = new Set();
 let totalCredits = 0;
 let maxCredits = 0;
 
-// Carga y parseo
+// 1) Cargo y parseo
 fetch('courses.txt')
   .then(r => r.text())
   .then(txt => {
     const lines = txt.split('\n').map(l=>l.trim()).filter(Boolean);
     const courses = [];
-    let currentYear = '', currentSem = '';
+    let currentYear='', currentSem='';
 
     for (const line of lines) {
       if (YEAR_ORDER.includes(line)) {
@@ -33,34 +33,35 @@ fetch('courses.txt')
       if (/I{1,3} Semestre|IV Semestre|V Semestre|VI Semestre|VII Semestre|VIII Semestre|IX Semestre|X Semestre/.test(line)) {
         currentSem = line; continue;
       }
-      const mName = line.match(/^(.+?) \(/);
-      const mCode = line.match(/\(código ([^)]+)\)/);
-      const mCred = line.match(/\(créditos que da (\d+)/);
-      const mOp   = line.match(/\(abre ([^)]+)\)/);
-      const mUn   = line.match(/\(créditos que ocupa (\d+)/);
-      if (!mName||!mCode||!mCred) continue;
+      const nm = line.match(/^(.+?) \(/);
+      const cm = line.match(/\(código ([^)]+)\)/);
+      const cr = line.match(/\(créditos que da (\d+)/);
+      const om = line.match(/\(abre ([^)]+)\)/);
+      const um = line.match(/\(créditos que ocupa (\d+)/);
+      if (!nm||!cm||!cr) continue;
 
-      const name    = mName[1].trim();
-      const code    = mCode[1].trim();
-      const credits = +mCred[1];
-      const opens   = mOp
-        ? (mOp[1].toLowerCase().includes('no abre')
-            ? [] : mOp[1].split(';').map(s=>s.trim()))
+      const name    = nm[1].trim();
+      const code    = cm[1].trim();
+      const credits = +cr[1];
+      const opens   = om
+        ? (om[1].toLowerCase().includes('no abre')
+            ? [] : om[1].split(';').map(s=>s.trim()))
         : [];
-      const unlock  = mUn ? +mUn[1] : 0;
+      const unlock  = um ? +um[1] : 0;
 
-      courses.push({ year: currentYear, semester: currentSem,
-        name, code, credits, opens,
-        unlockCredits: unlock, prerequisites: [] 
+      maxCredits += credits;
+      courses.push({
+        year: currentYear,
+        semester: currentSem,
+        name, code, credits,
+        opens,
+        unlockCredits: unlock,
+        prerequisites: []
       });
     }
 
-    // Código→nombre y suma total
-    courses.forEach(c => {
-      nameMap[c.code] = c.name;
-      maxCredits += c.credits;
-    });
-    // opens→prerequisites
+    // build nombre→mapa y prerequisites
+    courses.forEach(c => nameMap[c.code]=c.name);
     courses.forEach(c =>
       c.opens.forEach(o => {
         const tgt = courses.find(x=>x.name===o);
@@ -68,10 +69,12 @@ fetch('courses.txt')
       })
     );
 
+    // renderizar y controles
     renderByYearSem(courses);
     initControls(courses);
   })
-  .catch(e => console.error('courses.txt error:', e));
+  .catch(e => console.error('courses.txt:', e));
+
 
 function renderByYearSem(courses) {
   const container = document.getElementById('grid');
@@ -93,15 +96,18 @@ function renderByYearSem(courses) {
         const col = document.createElement('div');
         col.className = 'semester';
         col.innerHTML = `<h3>${sem}</h3><div class="courses-grid"></div>`;
+        const cg = col.querySelector('.courses-grid');
         lvl.filter(c=>c.semester===sem)
-           .forEach(c=>createCourseCard(c, col.querySelector('.courses-grid')));
+           .forEach(c=>createCourseCard(c,cg));
         yg.appendChild(col);
       });
     } else {
       html += `<div class="courses-grid-full"></div>`;
       sec.innerHTML = html;
-      lvl.forEach(c=>createCourseCard(c, sec.querySelector('.courses-grid-full')));
+      const full = sec.querySelector('.courses-grid-full');
+      lvl.forEach(c=>createCourseCard(c, full));
     }
+
     container.appendChild(sec);
   });
 }
@@ -117,13 +123,11 @@ function createCourseCard(course, parent) {
     <span class="code">${course.code}</span>
     <span class="name">${course.name}</span>
     <span class="cred">${course.credits} cr</span>`;
-  // Tooltip
+  // tooltip prerrequisitos
   const names = course.prerequisites.map(c=>nameMap[c]||c).join(', ');
   const tip = document.createElement('span');
   tip.className = 'prereqs';
-  tip.textContent = names
-    ? 'Prerrequisitos: '+names
-    : 'Sin prerrequisitos';
+  tip.textContent = names ? 'Prerrequisitos: '+names : 'Sin prerrequisitos';
   el.appendChild(tip);
 
   parent.appendChild(el);
@@ -136,6 +140,7 @@ function initControls(courses) {
   const btnReset = document.getElementById('reset');
   const btnDark  = document.getElementById('toggle-dark');
 
+  // Toggle prerrequisitos
   btnPre.addEventListener('click', () => {
     showPrereqs = !showPrereqs;
     document.body.classList.toggle('show-prereqs', showPrereqs);
@@ -144,19 +149,24 @@ function initControls(courses) {
       : 'Mostrar prerrequisitos';
   });
 
+  // Reset malla
   btnReset.addEventListener('click', () => {
     approved.clear();
     totalCredits = 0;
-    document.querySelectorAll('.course').forEach(el=>el.classList.remove('approved'));
+    document.querySelectorAll('.course').forEach(el => {
+      el.classList.remove('approved');
+    });
     updateUI();
   });
 
+  // Modo oscuro
   btnDark.addEventListener('click', () => {
     darkMode = !darkMode;
     document.body.classList.toggle('dark', darkMode);
     btnDark.textContent = darkMode ? 'Modo claro' : 'Modo oscuro';
   });
 
+  // Clic en cursos
   document.querySelectorAll('.course').forEach(el => {
     el.addEventListener('click', () => {
       if (el.classList.contains('locked')) return;
@@ -174,7 +184,20 @@ function initControls(courses) {
     });
   });
 
+  // UI inicial
   updateUI();
+
+  function updateUI() {
+    // Créditos
+    credEl.textContent = `Créditos acumulados: ${totalCredits}`;
+    // Progreso
+    const pct = maxCredits
+      ? Math.min(100, (totalCredits / maxCredits) * 100)
+      : 0;
+    bar.style.width = pct + '%';
+    // Bloqueos (incluye I Semestre con unlock=0 y sin prereqs)
+    refreshLockStates(courses);
+  }
 }
 
 function refreshLockStates(courses) {
@@ -182,14 +205,7 @@ function refreshLockStates(courses) {
     const el = document.querySelector(`.course[data-code="${c.code}"]`);
     const okCred = totalCredits >= +el.dataset.unlock;
     const okPre  = JSON.parse(el.dataset.prereqs)
-                      .every(r=>approved.has(r));
+                      .every(r => approved.has(r));
     el.classList.toggle('locked', !(okCred && okPre));
   });
-}
-
-function updateUI() {
-  document.getElementById('credits').textContent = `Créditos acumulados: ${totalCredits}`;
-  const pct = maxCredits ? Math.min(100, totalCredits/maxCredits*100) : 0;
-  document.getElementById('progress-bar').style.width = pct + '%';
-  refreshLockStates();
 }
