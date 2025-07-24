@@ -1,78 +1,125 @@
+/* 1) Fuente moderna desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* 2) Variables de color */
 :root {
-  --color-bg: #f4e5ff;
+  --color-bg-light: #faf4ff;
+  --color-bg-dark: #f4e5ff;
   --color-primary: #9b30ff;
-  --color-locked: #ddd;
-  --color-text: #333;
+  --color-primary-dark: #7a00cc;
+  --color-locked: #e0e0e0;
+  --color-text: #333333;
   --color-approved: #4caf50;
+  --shadow: rgba(0, 0, 0, 0.15);
 }
 
+/* 3) Reset y base */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 1rem;
-  font-family: sans-serif;
-  background: var(--color-bg);
+  font-family: 'Poppins', sans-serif;
+  background: var(--color-bg-light);
   color: var(--color-text);
+  line-height: 1.4;
+  padding: 1rem;
 }
 
+/* 4) Título y créditos */
 h1 {
   text-align: center;
-  margin-bottom: .5rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary-dark);
 }
 
 #credits {
   text-align: center;
-  font-weight: bold;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+/* 5) Sección por año */
+.year {
+  margin-bottom: 2.5rem;
+}
+
+.year > h2 {
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+  border-bottom: 3px solid var(--color-primary);
+  padding-bottom: 0.25rem;
   margin-bottom: 1rem;
 }
 
-#grid {
-  display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+/* 6) Sección por semestre */
+.semester {
+  margin-bottom: 1.75rem;
 }
 
+.semester > h3 {
+  font-size: 1.3rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.75rem;
+}
+
+/* 7) Grid interno de cada semestre */
+.semester .grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+/* 8) Tarjetas de curso */
 .course {
   background: var(--color-primary);
-  color: white;
-  padding: .75rem;
-  border-radius: 6px;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 8px;
   text-align: center;
   cursor: pointer;
   user-select: none;
   position: relative;
-  transition: transform .1s;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 6px var(--shadow);
 }
 
 .course:hover {
-  transform: scale(1.03);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
+/* 9) Estados Locked & Approved */
 .course.locked {
   background: var(--color-locked);
   color: #888;
   cursor: default;
+  box-shadow: none;
 }
 
 .course.approved {
   background: var(--color-approved);
-  color: white;
+  color: #fff;
 }
 
+/* 10) Tipografía interna de la tarjeta */
 .course .code {
-  font-size: .8rem;
-  opacity: .8;
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 .course .name {
   display: block;
-  margin: .5rem 0;
-  font-weight: bold;
+  margin: 0.5rem 0;
+  font-weight: 600;
 }
 
 .course .cred {
-  font-size: .75rem;
+  font-size: 0.75rem;
+  opacity: 0.9;
 }
