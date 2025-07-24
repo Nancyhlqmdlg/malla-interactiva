@@ -1,20 +1,141 @@
-/* QUITAMOS @import y usamos sans-serif genérico */
 :root {
   --bg: #faf4ff;
   --sec-bg: #f4e5ff;
-  --purple-light: #f0e0ff;
-  --purple: #9b30ff;
-  --purple-dark: #440066;
-  --locked: #e0e0e0;
-  --text: #333;
-  --approved: #330066;
-  --shadow: rgba(0,0,0,0.1);
+  --primary: #9b30ff;
+  --primary-dark: #440066;
+  --light: #f0e0ff;
+  --locked-bg: #e0e0e0;
+  --text: #333333;
+  --approved-bg: #330066;
+  --shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-dark);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#credits {
+  text-align: center;
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Niveles */
+.year {
+  margin-bottom: 2rem;
+}
+.year > h2 {
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Grid de semestres */
+.year-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Columna de semestre */
+.semester {
+  background: var(--sec-bg);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.semester > h3 {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Cursos dentro de semestres */
+.courses-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+/* Para Sexto y Séptimo año (sin semestres) */
+.courses-grid-full {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+/* Tarjetas de curso */
+.course {
+  background: var(--light);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.course:hover:not(.locked) {
+  transform: translateY(-2px);
+}
+
+/* Estado bloqueado */
+.course.locked {
+  background: var(--locked-bg);
+  border-color: var(--locked-bg);
+  color: #888888;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Estado aprobado */
+.course.approved {
+  background: var(--approved-bg);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+  text-decoration: line-through;
+}
+
+/* Tipografía interna */
+.course .code {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+.course .name {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0.3rem 0;
+  text-align: center;
+}
+.course .cred {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
