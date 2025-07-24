@@ -4,7 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Médico Cirujano UACJ</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- ESTILOS INLINE PARA TESTEO -->
+  <style>
+  :root {
+    --bg: #faf4ff;
+    --sec-bg: #f4e5ff;
+    --purple-light: #f0e0ff;
+    --purple: #9b30ff;
+    --purple-dark: #440066;
+    --locked: #e0e0e0;
+    --text: #333;
+    --approved: #330066;
+    --shadow: rgba(0,0,0,0.1);
+  }
+  * { box-sizing: border-box; margin:0; padding:0 }
+  body {
+    font-family: sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 1rem;
+  }
+  h1 {
+    text-align: center;
+    color: var(--purple-dark);
+    margin-bottom: .5rem;
+  }
+  #credits {
+    text-align: center;
+    color: var(--purple);
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  .year { margin-bottom: 2rem; }
+  .year > h2 {
+    font-size: 1.5rem;
+    color: var(--purple-dark);
+    border-bottom: 3px solid var(--purple);
+    padding-bottom: .25rem;
+    margin-bottom: 1rem;
+  }
+  .year-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  }
+  .semester {
+    background: var(--sec-bg);
+    border: 2px solid var(--purple);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .semester > h3 {
+    background: var(--purple);
+    color: #fff;
+    text-align: center;
+    padding: .5rem;
+    font-weight: bold;
+  }
+  .courses-grid, .courses-grid-full {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .75rem;
+  }
+  .courses-grid-full { flex-wrap: wrap; }
+  .course {
+    background: var(--purple-light);
+    border: 2px solid var(--purple);
+    border-radius: 4px;
+    padding: .5rem;
+    cursor: pointer;
+    transition: transform .1s, background .2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .course:hover:not(.locked) { transform: translateY(-2px); }
+  .course.locked {
+    background: var(--locked);
+    border-color: var(--locked);
+    color: #888;
+    cursor: default;
+  }
+  .course.approved {
+    background: var(--approved);
+    border-color: var(--purple-dark);
+    color: #fff;
+    text-decoration: line-through;
+  }
+  .course .code { font-size: .75rem; opacity: .8; }
+  .course .name { font-size: .9rem; font-weight: bold; text-align: center; margin: .3rem 0; }
+  .course .cred { font-size: .75rem; opacity: .9; }
+  </style>
+  <!-- /FIN ESTILOS INLINE -->
 </head>
 <body>
   <h1>Médico Cirujano UACJ</h1>
