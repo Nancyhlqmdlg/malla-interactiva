@@ -1,1 +1,82 @@
-
+Primer año
+I Semestre
+Físicoquímica (código MED986614) (créditos que da 12) (abre Bioquímica General; Anatomía Humana I; Microbiología I) (créditos que ocupa 0)
+Biología Celular y Molecular (código BAS988914) (créditos que da 10) (abre Bioquímica General; Embriología Humana; Microbiología I; Histología General) (créditos que ocupa 0)
+Nomenclatura Médica (código MED986214) (créditos que da 4) (abre Embriología Humana; Anatomía Humana I) (créditos que ocupa 0)
+TIC’s Aplicadas a la Ciencias de la Salud (código MED989014) (créditos que da 10) (abre Bioquímica General; Histología General; Metodología de la Investigación en Salud) (créditos que ocupa 0)
+Competencias Comunicativas con Enfoque de Género (código HUM215600) (créditos que da 8) (abre Competencias para el Desarrollo Humano Sustentable con Enfoque de Género) (créditos que ocupa 0)
+Ética y Filosofía de la Medicina (código MED986414) (créditos que da 4) (abre Metodología de la Investigación en Salud) (créditos que ocupa 0)
+II Semestre
+Bioquímica General (código BAS000800) (créditos que da 12) (abre Bioquímica Médica; Fisiología Humana I) (créditos que ocupa 0)
+Embriología Humana (código BAS980900) (créditos que da 6) (abre Genética Médica) (créditos que ocupa 0)
+Anatomía Humana I (código BAS000194) (créditos que da 15) (abre Anatomía Humana II; Histopatología; Fisiología Humana I) (créditos que ocupa 0)
+Microbiología I (código BAS001094) (créditos que da 11) (abre Microbiología II) (créditos que ocupa 0)
+Histología General (código BAS981000) (créditos que da 15) (abre Histopatología) (créditos que ocupa 0)
+Segundo año
+III Semestre
+Bioquímica Médica (código BAS982000) (créditos que da 8) (abre Farmacología Médica; Taller de Integración I, Genética Médica, Fisiología Humana II) (créditos que ocupa 0)
+Metodología de la Investigación en Salud (código MED986514) (créditos que da 6) (abre Estadística Descriptiva; Salud Comunitaria I; Investigación Clínica I) (créditos que ocupa 80)
+Anatomía Humana II (código BAS000494) (créditos que da 15) (abre Anatomía por Imagen; Taller de Integración I; Salud Comunitaria I) (créditos que ocupa 0)
+Microbiología II (código BAS001394) (créditos que da 11) (abre Farmacología Médica; Taller de Integración I; Salud Comunitaria I) (créditos que ocupa 0)
+Histopatología (código MED986814) (créditos que da 15) (abre Taller de Integración I; Fisiología Humana II) (créditos que ocupa 0)
+Fisiología Humana I (código BAS000500) (créditos que da 15) (abre Farmacología Médica; Taller de Integración; Genética Médica; Fisiología Humana II; Salud Comunitaria I) (créditos que ocupa 0)
+IV Semestre
+Farmacología Médica (código MED982900) (créditos que da 10) (abre Terapéutica Médica; Propedéutica Médica; Habilidades Médico Quirúrgicas) (créditos que ocupa 0)
+Estadística Descriptiva (código PEC008100) (créditos que da 6) (abre Estadística Inferencial) (créditos que ocupa 0)
+Anatomía por Imagen (código MED983100) (créditos que da 6) (no abre nada) (créditos que ocupa 0)
+Taller de Integración I (código MED982300) (créditos que da 4) (abre Propedéutica Médica; Habilidades Médico Quirúrgicas; Salud Comunitaria II) (créditos que ocupa 0)
+Genética Médica (código MED982200) (créditos que da 6) (abre Inmunología Médica) (créditos que ocupa 0)
+Fisiología Humana II (código BAS982100) (créditos que da 15) (abre Terapéutica Médica; Propedéutica Médica; Habilidades Médico Quirúrgicas) (créditos que ocupa 0)
+Salud Comunitaria I (código MED982100) (créditos que da 18) (abre Salud Comunitaria II) (créditos que ocupa 0)
+Tercer año
+V Semestre 
+Terapéutica Médica (código MED986914) (créditos que da 15) (abre Cardiología; Endocrinología; Hematología; Clínica del Dolor; Reumatología; Psiquiatría) (créditos que ocupa 0)
+Estadística Inferencial (código PEC008900) (créditos que da 6) (abre Medicina Basada en Evidencias; Investigación Cínica I) (créditos que ocupa 0)
+Propedéutica Médica (código MED986314) (créditos que da 20) (abre Cardiología; Cirugía General; Endocrinología; Hematología; Clínica del Dolor; Reumatología; Psiquiatría) (créditos que ocupa 0)
+Competencias para el Desarrollo Humano Sustentable con Enfoque de Género (código HUM215700) (créditos que da 8) (abre Competencias del Ejercicio de la Ciudadanía con Enfoque de Género) (créditos que ocupa 250)
+Habilidades Médico Quirúrgicas (código MED990814) (créditos que da 10) (abre Cirugía General) (créditos que ocupa 0)
+Salud Comunitaria II (código MED987014) (créditos que da 15) (abre Medicina Comunitaria) (créditos que ocupa 0)
+VI Semestre
+Cardiología (código MED987214) (créditos que da 18) (abre Ortopedia; Urología) (créditos que ocupa 0)
+Cirugía General (código MED984500) (créditos que da 18) (abre Ortopedia; Urología; Gastroenterología; Gineco-obstetricia; Pediatría) (créditos que ocupa 0)
+Endocrinología (código MED984600) (créditos que da 7) (no abre nada) (créditos que ocupa 0)
+Hematología (código MED989114) (créditos que da 4) (no abre nada) (créditos que ocupa 0)
+Inmunología Médica (código MED982800) (créditos que da 6) (abre Reumatología) (créditos que ocupa 0)
+Medicina Basada en Evidencias (código MED020494) (créditos que da 8) (abre Investigación Clínica I) (créditos que ocupa 0)
+Cuarto año
+VII Semestre
+Ortopedia (código MED987514) (créditos que da 10) (abre Geriatría; Gastroenterología; Neumología) (créditos que ocupa 0)
+Urología (código MED987614) (créditos que da 8) (abre Geriatría; Gastroenterología; Neumología; Pediatría; Gineco-obstetricia) (créditos que ocupa 0)
+Investigación Clínica I (código MED986714) (créditos que da 6) (abre Epidemiología; Medicina Comunitaria; Investigación Clínica II) (créditos que ocupa 0)
+Clínica del Dolor (código MED987714) (créditos que da 4) (abre Geriatría; Medicina Comunitaria) (créditos que ocupa 0)
+Reumatología (código MED987114) (créditos que da 4) (no abre nada) (créditos que ocupa 0)
+Psiquiatría (código MED987814) (créditos que da 6) (no abre nada) (créditos que ocupa 0)
+Psicología Médica (código MED070794) (créditos que da 8) (no abre nada) (créditos que ocupa 380)
+Sexualidad Humana (código MED240704) (créditos que da 8) (no abre nada) (créditos que ocupa 380)
+VIII Semestre
+Oftalmología (código MED985900) (créditos que da 5) (no abre nada) (créditos que ocupa 420)
+Epidemiología (código MED040594) (créditos que da 6) (abre Infectología; Competencias del Ejercicio de la Ciudadanía con Enfoque de Género)
+Geriatría (código MED988014) (créditos que da 6) (no abre nada) (créditos que ocupa 0)
+Gastroenterología (código MED984800) (créditos que da 12) (abre Pediatría; Gineco-obstetricia; Nefrología) (créditos que ocupa 0)
+Neumología (código MED987314) (créditos que da 18) (abre Gineco-obstetricia; Nefrología) (créditos que ocupa 0)
+Otorrinolaringología (código MED986000) (créditos que da 7) (abre Pediatría) (créditos que ocupa 420)
+Medicina Comunitaria (código MED988114) (créditos que da 15) (abre Investigación Clínica II) (créditos que ocupa 0)
+Quinto año
+IX Semestre
+Pediatría (código MED988214) (créditos que da 18) (abre Taller de Integración II; Medicina en Urgencias; Neurología) (créditos que ocupa 0)
+Gineco-obstetricia (código MED988314) (créditos que da 18) (abre Taller de Integración II; Medicina en Urgencias; Neurología) (créditos que ocupa 0)
+Tópicos Selectos de Medicina Laboral y Legal (código MED988414) (créditos que da 8) (abre Investigación Clínica II) (créditos que ocupa 500)
+Infectología (código MED984700) (créditos que da 8) (abre Taller de Integración II; Medicina en Urgencias; Investigación Clínica II; Neurología) (créditos que ocupa 0)
+Nefrología (código MED987914) (créditos que da 8) (abre Taller de Integración II; Medicina en Urgencias) (créditos que ocupa 0)
+Nutrición Médica (código MED984900) (créditos que da 6) (no abre nada) (créditos que ocupa 500)
+X Semestre
+Taller de Integración II (código MED988514) (créditos que da 8) (abre Internado Rotatorio de Pregrado) (créditos que ocupa 0)
+Medicina en Urgencias (código MED988614) (créditos que da 15) (abre Internado Rotatorio de Pregrado) (créditos que ocupa 0)
+Competencias del Ejercicio de la Ciudadanía con Enfoque de Género (código HUM215800) (créditos que da 10) (abre Internado Rotatorio de Pregrado) (créditos que ocupa 575)
+Investigación Clínica II (código MED988714) (créditos que da 8) (abre Internado Rotatorio de Pregrado) (créditos que ocupa 0)
+Neurología (código MED988814) (créditos que da 18) (abre Internado Rotatorio de Pregrado) (créditos que ocupa 0)
+Dermatología (código MED987414) (créditos que da 8) (abre Internado Rotatorio de Pregrado) (créditos que ocupa 575)
+Sexto año
+Internado Rotatorio de Pregrado (código MED911204) (créditos que da 1) (abre Servicio Social) (créditos que ocupa 656)
+Séptimo año
+Servicio Social (código MED982700) (créditos que ocupa 657)
