@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Médico Cirujano UACJ</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <h1>Médico Cirujano UACJ</h1>
-  <p id="credits">Créditos acumulados: 0</p>
+
+  <div class="controls">
+    <p id="credits">Créditos acumulados: 0</p>
+    <button id="toggle-prereqs">Mostrar prerrequisitos</button>
+    <button id="reset">Reset malla</button>
+    <button id="toggle-dark">Modo oscuro</button>
+  </div>
+
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
   <div id="grid"></div>
   <script src="script.js"></script>
 </body>
