@@ -18,7 +18,7 @@ Metodología de la Investigación en Salud (código MED986514) (créditos que da
 Anatomía Humana II (código BAS000494) (créditos que da 15) (abre Anatomía por Imagen; Taller de Integración I; Salud Comunitaria I) (créditos que ocupa 0)
 Microbiología II (código BAS001394) (créditos que da 11) (abre Farmacología Médica; Taller de Integración I; Salud Comunitaria I) (créditos que ocupa 0)
 Histopatología (código MED986814) (créditos que da 15) (abre Taller de Integración I; Fisiología Humana II) (créditos que ocupa 0)
-Fisiología Humana I (código BAS000500) (créditos que da 15) (abre Farmacología Médica; Taller de Integración; Genética Médica; Fisiología Humana II; Salud Comunitaria I) (créditos que ocupa 0)
+Fisiología Humana I (código BAS000500) (créditos que da 15) (abre Farmacología Médica; Taller de Integración I; Genética Médica; Fisiología Humana II; Salud Comunitaria I) (créditos que ocupa 0)
 IV Semestre
 Farmacología Médica (código MED982900) (créditos que da 10) (abre Terapéutica Médica; Propedéutica Médica; Habilidades Médico Quirúrgicas) (créditos que ocupa 0)
 Estadística Descriptiva (código PEC008100) (créditos que da 6) (abre Estadística Inferencial) (créditos que ocupa 0)
