@@ -139,7 +139,6 @@ const bar      = document.getElementById('progress-bar');
 const btnPre   = document.getElementById('toggle-prereqs');
 const btnReset = document.getElementById('reset');
 const btnDark  = document.getElementById('toggle-dark');
-
 const btnPrin  = document.getElementById('select-principiante');
 const btnInter = document.getElementById('select-intermedio');
 const btnAvan  = document.getElementById('select-avanzado');
