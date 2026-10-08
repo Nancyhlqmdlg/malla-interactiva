@@ -9,12 +9,18 @@
 <body>
   <h1>Médico Cirujano UACJ</h1>
 
-  <div class="controls">
-    <p id="credits">Créditos acumulados: 0</p>
-    <button id="toggle-prereqs">Mostrar prerrequisitos</button>
-    <button id="reset">Reset malla</button>
-    <button id="toggle-dark">Modo oscuro</button>
-  </div>
+ <div class="controls">
+  <p id="credits">Créditos acumulados: 0</p>
+
+  <button id="select-principiante">Principiante</button>
+  <button id="select-intermedio">Intermedio</button>
+  <button id="select-avanzado">Avanzado</button>
+
+  <button id="toggle-prereqs">Mostrar prerrequisitos</button>
+  <button id="reset">Reset malla</button>
+  <button id="toggle-dark">Modo oscuro</button>
+</div>
+
 
   <div id="progress-container">
     <div id="progress-bar"></div>
@@ -24,32 +30,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-<div class="year">
-  <div class="year-header">
-    <h2>Principiante</h2>
-    <button
-      class="select-level-btn"
-      id="select-principiante">
-      Seleccionar nivel
-    </button>
-  </div>
-
-  <div class="year-header">
-  <h2>Intermedio</h2>
-  <button
-    class="select-level-btn"
-    id="select-intermedio">
-    Seleccionar nivel
-  </button>
-</div>
-
-
- <div class="year-header">
-  <h2>Avanzado</h2>
-  <button
-    class="select-level-btn"
-    id="select-avanzado">
-    Seleccionar nivel
-  </button>
-</div>
-
