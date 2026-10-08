@@ -175,43 +175,24 @@ const btnAvan  = document.getElementById('select-avanzado');
     c => c.year === nombreNivel
   );
 
-  let huboCambios = true;
+  materias.forEach(c => {
 
-  while (huboCambios) {
+    if (!approved.has(c.code)) {
 
-    huboCambios = false;
+      approved.add(c.code);
+      totalCredits += c.credits;
 
-    materias.forEach(c => {
+      const el = document.querySelector(
+        `.course[data-code="${c.code}"]`
+      );
 
-      if (approved.has(c.code)) return;
-
-      const okCred =
-        totalCredits >= c.unlockCredits;
-
-      const okPre =
-        c.prerequisites.every(
-          p => approved.has(p)
-        );
-
-      if (okCred && okPre) {
-
-        approved.add(c.code);
-        totalCredits += c.credits;
-
-        const el = document.querySelector(
-          `.course[data-code="${c.code}"]`
-        );
-
-        if (el) {
-          el.classList.add('approved');
-        }
-
-        huboCambios = true;
+      if (el) {
+        el.classList.add('approved');
       }
 
-    });
+    }
 
-  }
+  });
 
   updateUI();
 }
