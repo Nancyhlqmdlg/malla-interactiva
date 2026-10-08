@@ -134,11 +134,16 @@ function createCourseCard(course, parent) {
 }
 
 function initControls(courses) {
-  const credEl   = document.getElementById('credits');
-  const bar      = document.getElementById('progress-bar');
-  const btnPre   = document.getElementById('toggle-prereqs');
-  const btnReset = document.getElementById('reset');
-  const btnDark  = document.getElementById('toggle-dark');
+const credEl   = document.getElementById('credits');
+const bar      = document.getElementById('progress-bar');
+const btnPre   = document.getElementById('toggle-prereqs');
+const btnReset = document.getElementById('reset');
+const btnDark  = document.getElementById('toggle-dark');
+
+const btnPrin  = document.getElementById('select-principiante');
+const btnInter = document.getElementById('select-intermedio');
+const btnAvan  = document.getElementById('select-avanzado');
+
 
   // Toggle prerrequisitos
   btnPre.addEventListener('click', () => {
@@ -165,6 +170,65 @@ function initControls(courses) {
     document.body.classList.toggle('dark', darkMode);
     btnDark.textContent = darkMode ? 'Modo claro' : 'Modo oscuro';
   });
+  function completarNivel(nombreNivel) {
+
+  const materias = courses.filter(
+    c => c.year === nombreNivel
+  );
+
+  let huboCambios = true;
+
+  while (huboCambios) {
+
+    huboCambios = false;
+
+    materias.forEach(c => {
+
+      if (approved.has(c.code)) return;
+
+      const okCred =
+        totalCredits >= c.unlockCredits;
+
+      const okPre =
+        c.prerequisites.every(
+          p => approved.has(p)
+        );
+
+      if (okCred && okPre) {
+
+        approved.add(c.code);
+        totalCredits += c.credits;
+
+        const el = document.querySelector(
+          `.course[data-code="${c.code}"]`
+        );
+
+        if (el) {
+          el.classList.add('approved');
+        }
+
+        huboCambios = true;
+      }
+
+    });
+
+  }
+
+  updateUI();
+}
+
+btnPrin.addEventListener('click', () => {
+  completarNivel('Principiante');
+});
+
+btnInter.addEventListener('click', () => {
+  completarNivel('Intermedio');
+});
+
+btnAvan.addEventListener('click', () => {
+  completarNivel('Avanzado');
+});
+
 
   // Clic en cursos
   document.querySelectorAll('.course').forEach(el => {
